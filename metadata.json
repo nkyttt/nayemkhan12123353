@@ -1,0 +1,6 @@
+{
+  "name": "GameHub CXT",
+  "description": "Game file hosting, portfolio showcase, digital creator store, and full admin visual customizer platform.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

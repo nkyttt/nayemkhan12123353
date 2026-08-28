@@ -1,0 +1,266 @@
+{
+  "entities": {
+    "admins": {
+      "title": "AdminUser",
+      "description": "Authorized administrator user profile with active status and role",
+      "type": "object",
+      "properties": {
+        "email": { "type": "string" },
+        "role": { "type": "string", "enum": ["OWNER", "ADMIN", "EDITOR", "MODERATOR"] },
+        "active": { "type": "boolean" },
+        "displayName": { "type": "string" },
+        "createdAt": { "type": "string" },
+        "lastLogin": { "type": "string" }
+      },
+      "required": ["email", "role", "active"]
+    },
+    "categories": {
+      "title": "Category",
+      "description": "Product and game categories with slugs, icon keys, and display ordering",
+      "type": "object",
+      "properties": {
+        "name": { "type": "string" },
+        "slug": { "type": "string" },
+        "iconKey": { "type": "string" },
+        "description": { "type": "string" },
+        "status": { "type": "string", "enum": ["active", "inactive"] },
+        "sortOrder": { "type": "number" },
+        "createdAt": { "type": "string" },
+        "updatedAt": { "type": "string" }
+      },
+      "required": ["name", "slug", "iconKey", "status"]
+    },
+    "games": {
+      "title": "Game",
+      "description": "Game file item available for download or purchase",
+      "type": "object",
+      "properties": {
+        "title": { "type": "string" },
+        "slug": { "type": "string" },
+        "description": { "type": "string" },
+        "category": { "type": "string" },
+        "categoryId": { "type": "string" },
+        "version": { "type": "string" },
+        "developer": { "type": "string" },
+        "publisher": { "type": "string" },
+        "releaseDate": { "type": "string" },
+        "coverImage": { "type": "string" },
+        "bannerImage": { "type": "string" },
+        "screenshots": { "type": "string" },
+        "trailerUrl": { "type": "string" },
+        "fileUrl": { "type": "string" },
+        "fileName": { "type": "string" },
+        "fileSize": { "type": "string" },
+        "fileType": { "type": "string" },
+        "price": { "type": "number" },
+        "currency": { "type": "string" },
+        "discountPrice": { "type": "number" },
+        "isFree": { "type": "boolean" },
+        "isFeatured": { "type": "boolean" },
+        "rating": { "type": "number" },
+        "downloadsCount": { "type": "number" },
+        "tags": { "type": "string" },
+        "minCpu": { "type": "string" },
+        "minGpu": { "type": "string" },
+        "minRam": { "type": "string" },
+        "minStorage": { "type": "string" },
+        "minOs": { "type": "string" },
+        "status": { "type": "string" }
+      },
+      "required": ["title", "slug", "category", "version", "fileSize"]
+    },
+    "products": {
+      "title": "DigitalProduct",
+      "description": "Digital creator asset, source code, or template in the store with affiliate buy links",
+      "type": "object",
+      "properties": {
+        "title": { "type": "string" },
+        "slug": { "type": "string" },
+        "description": { "type": "string" },
+        "shortDescription": { "type": "string" },
+        "category": { "type": "string" },
+        "categoryId": { "type": "string" },
+        "price": { "type": "number" },
+        "currency": { "type": "string" },
+        "discountPrice": { "type": "number" },
+        "isFree": { "type": "boolean" },
+        "thumbnail": { "type": "string" },
+        "imageUrl": { "type": "string" },
+        "buyNowUrl": { "type": "string" },
+        "gallery": { "type": "string" },
+        "version": { "type": "string" },
+        "licenseType": { "type": "string" },
+        "tags": { "type": "string" },
+        "demoUrl": { "type": "string" },
+        "docsUrl": { "type": "string" },
+        "fileUrl": { "type": "string" },
+        "fileName": { "type": "string" },
+        "fileSize": { "type": "string" },
+        "salesCount": { "type": "number" },
+        "rating": { "type": "number" },
+        "isFeatured": { "type": "boolean" },
+        "status": { "type": "string", "enum": ["published", "draft", "deleted"] },
+        "creatorId": { "type": "string" },
+        "creatorName": { "type": "string" },
+        "developer": { "type": "string" },
+        "releaseDate": { "type": "string" },
+        "createdAt": { "type": "string" },
+        "updatedAt": { "type": "string" },
+        "createdBy": { "type": "string" },
+        "updatedBy": { "type": "string" }
+      },
+      "required": ["title", "description", "price", "category", "imageUrl", "buyNowUrl"]
+    },
+    "auditLogs": {
+      "title": "AuditLog",
+      "description": "Administrative actions and operations audit log trail",
+      "type": "object",
+      "properties": {
+        "adminUid": { "type": "string" },
+        "adminEmail": { "type": "string" },
+        "action": { "type": "string" },
+        "resourceType": { "type": "string" },
+        "resourceId": { "type": "string" },
+        "details": { "type": "string" },
+        "timestamp": { "type": "string" },
+        "metadata": { "type": "string" }
+      },
+      "required": ["adminUid", "action", "resourceType", "timestamp"]
+    },
+    "portfolioProjects": {
+      "title": "PortfolioProject",
+      "description": "Showcase portfolio work by the developer/creator",
+      "type": "object",
+      "properties": {
+        "title": { "type": "string" },
+        "description": { "type": "string" },
+        "thumbnail": { "type": "string" },
+        "category": { "type": "string" },
+        "technologies": { "type": "string" },
+        "liveDemoUrl": { "type": "string" },
+        "sourceCodeUrl": { "type": "string" },
+        "client": { "type": "string" },
+        "date": { "type": "string" },
+        "isFeatured": { "type": "boolean" }
+      },
+      "required": ["title", "description", "category"]
+    },
+    "portfolioSkills": {
+      "title": "PortfolioSkill",
+      "description": "Skill level and expertise rating",
+      "type": "object",
+      "properties": {
+        "name": { "type": "string" },
+        "category": { "type": "string" },
+        "percentage": { "type": "number" },
+        "icon": { "type": "string" }
+      },
+      "required": ["name", "percentage"]
+    },
+    "orders": {
+      "title": "Order",
+      "description": "User purchase order record",
+      "type": "object",
+      "properties": {
+        "userId": { "type": "string" },
+        "customerEmail": { "type": "string" },
+        "customerName": { "type": "string" },
+        "customerPhone": { "type": "string" },
+        "totalAmount": { "type": "number" },
+        "paymentMethod": { "type": "string" },
+        "paymentStatus": { "type": "string" },
+        "transactionId": { "type": "string" },
+        "items": { "type": "string" },
+        "createdAt": { "type": "string" }
+      },
+      "required": ["customerEmail", "totalAmount", "paymentStatus"]
+    },
+    "reviews": {
+      "title": "Review",
+      "description": "User rating and feedback for game or digital product",
+      "type": "object",
+      "properties": {
+        "targetType": { "type": "string" },
+        "targetId": { "type": "string" },
+        "userId": { "type": "string" },
+        "userName": { "type": "string" },
+        "userAvatar": { "type": "string" },
+        "rating": { "type": "number" },
+        "comment": { "type": "string" },
+        "createdAt": { "type": "string" }
+      },
+      "required": ["targetType", "targetId", "rating", "comment"]
+    },
+    "siteConfig": {
+      "title": "SiteConfiguration",
+      "description": "Dynamic customizable site theme, hero, video background, and settings",
+      "type": "object",
+      "properties": {
+        "siteName": { "type": "string" },
+        "siteTagline": { "type": "string" },
+        "logoUrl": { "type": "string" },
+        "themePreset": { "type": "string" },
+        "primaryColor": { "type": "string" },
+        "accentColor": { "type": "string" },
+        "videoBgUrl": { "type": "string" },
+        "videoBgType": { "type": "string" },
+        "videoOverlayOpacity": { "type": "number" },
+        "heroHeading": { "type": "string" },
+        "heroSubtitle": { "type": "string" },
+        "heroBtnPrimaryText": { "type": "string" },
+        "heroBtnSecondaryText": { "type": "string" },
+        "maintenanceMode": { "type": "boolean" },
+        "maintenanceMessage": { "type": "string" },
+        "customDomain": { "type": "string" },
+        "discordWebhookUrl": { "type": "string" },
+        "customCss": { "type": "string" },
+        "seoTitle": { "type": "string" },
+        "seoDescription": { "type": "string" },
+        "seoKeywords": { "type": "string" }
+      },
+      "required": ["siteName"]
+    }
+  },
+  "firestore": {
+    "/admins/{adminUid}": {
+      "schema": "admins",
+      "description": "Authorized administrators list and active status"
+    },
+    "/categories/{categoryId}": {
+      "schema": "categories",
+      "description": "Store and games categories catalog"
+    },
+    "/games/{gameId}": {
+      "schema": "games",
+      "description": "Game file hosting entries"
+    },
+    "/products/{productId}": {
+      "schema": "products",
+      "description": "Digital store products and affiliate assets"
+    },
+    "/auditLogs/{logId}": {
+      "schema": "auditLogs",
+      "description": "Administrative actions audit log"
+    },
+    "/portfolioProjects/{projectId}": {
+      "schema": "portfolioProjects",
+      "description": "Portfolio showcase projects"
+    },
+    "/portfolioSkills/{skillId}": {
+      "schema": "portfolioSkills",
+      "description": "Developer skills and proficiency levels"
+    },
+    "/orders/{orderId}": {
+      "schema": "orders",
+      "description": "Purchases and order receipts"
+    },
+    "/reviews/{reviewId}": {
+      "schema": "reviews",
+      "description": "Customer game and product reviews"
+    },
+    "/siteConfig/{configId}": {
+      "schema": "siteConfig",
+      "description": "Global website styling, hero, video background, and settings"
+    }
+  }
+}
